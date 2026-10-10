@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haritalar | Ayşe Sıla Yılmaz</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- OpenLayers -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.6.1/ol.css">
+  <script src="https://cdn.jsdelivr.net/npm/ol@v10.6.1/dist/ol.js"></script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1>Ayşe Sıla Yılmaz</h1>
+
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="about.html">Hakkımda</a></li>
+        <li><a href="projects.html">Projelerim</a></li>
+        <li><a href="maps.html">Haritalar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="content">
+      <h2>Web GIS Haritalarım</h2>
+
+      <p>
+        Aşağıdaki haritalarda Ankara'daki bazı konumlar Leaflet ve OpenLayers
+        kullanılarak gösterilmektedir.
+      </p>
+
+      <section class="map-section">
+        <h3>Leaflet Haritası</h3>
+        <p class="map-note">
+          İşaretçiler yalnızca harita yeterince yakınlaştırıldığında görünür.
+        </p>
+        <div id="leaflet-map"></div>
+      </section>
+
+      <section class="map-section">
+        <h3>OpenLayers Haritası</h3>
+        <p class="map-note">
+          Bu haritada dünya tekrarını engelleyen ayar uygulanmıştır.
+        </p>
+        <div id="openlayers-map"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Ayşe Sıla Yılmaz</p>
+  </footer>
+
+  <script>
+    /* ---------------- LEAFLET HARİTASI ---------------- */
+
+    const leafletMap = L.map("leaflet-map", {
+      worldCopyJump: false,
+      maxBounds: [[-85, -180], [85, 180]],
+      maxBoundsViscosity: 1
+    }).setView([39.90, 32.80], 7);
+
+    L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 19,
+        noWrap: true,
+        attribution: "&copy; OpenStreetMap contributors"
+      }
+    ).addTo(leafletMap);
+
+    const locations = [
+      [39.8700, 32.7350, "Hacettepe Üniversitesi Beytepe Kampüsü"],
+      [39.9334, 32.8597, "Ankara Şehir Merkezi"],
+      [39.9208, 32.8541, "Anıtkabir"],
+      [39.8790, 32.7590, "Bilkent"]
+    ];
+
+    const leafletMarkers = L.layerGroup().addTo(leafletMap);
+
+    function updateLeafletMarkers() {
+      leafletMarkers.clearLayers();
+
+      if (leafletMap.getZoom() >= 10) {
+        locations.forEach(function (location) {
+          L.marker([location[0], location[1]])
+            .bindPopup("<b>" + location[2] + "</b>")
+            .addTo(leafletMarkers);
+        });
+      }
+    }
+
+    leafletMap.on("zoomend", updateLeafletMarkers);
+    updateLeafletMarkers();
+
+
+    /* -------------- OPENLAYERS HARİTASI -------------- */
+
+    const openLayersMap = new ol.Map({
+      target: "openlayers-map",
+      layers: [
+        new ol.layer.Tile({
+          source: new ol.source.OSM({
+            wrapX: false
+          })
+        })
+      ],
+      view: new ol.View({
+        center: ol.proj.fromLonLat([32.80, 39.90]),
+        zoom: 7,
+        minZoom: 3,
+        extent: ol.proj.transformExtent(
+          [-180, -85, 180, 85],
+          "EPSG:4326",
+          "EPSG:3857"
+        )
+      })
+    });
+
+    const openLayersFeatures = locations.map(function (location) {
+      return new ol.Feature({
+        geometry: new ol.geom.Point(
+          ol.proj.fromLonLat([location[1], location[0]])
+        ),
+        name: location[2]
+      });
+    });
+
+    const openLayersMarkerLayer = new ol.layer.Vector({
+      source: new ol.source.Vector({
+        features: openLayersFeatures
+      }),
+      style: new ol.style.Style({
+        image: new ol.style.Circle({
+          radius: 7,
+          fill: new ol.style.Fill({ color: "#e76f51" }),
+          stroke: new ol.style.Stroke({ color: "white", width: 2 })
+        })
+      }),
+      visible: false
+    });
+
+    openLayersMap.addLayer(openLayersMarkerLayer);
+
+    openLayersMap.getView().on("change:resolution", function () {
+      const currentZoom = openLayersMap.getView().getZoom();
+      openLayersMarkerLayer.setVisible(currentZoom >= 10);
+    });
+  </script>
+</body>
+</html>
