@@ -451,9 +451,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let minPixelDistance;
 
-      if (zoom < 4) minPixelDistance = 90;
-      else if (zoom < 5) minPixelDistance = 65;
-      else if (zoom < 6) minPixelDistance = 35;
+      if (zoom < 5) minPixelDistance = 120;
+      else if (zoom < 7) minPixelDistance = 90;
+      else if (zoom < 9) minPixelDistance = 60;
+      else if (zoom < 10) minPixelDistance = 35;
       else minPixelDistance = 0;
 
       const selected = [];
@@ -478,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
       markerLayer.changed();
 
       if (instruction) {
-        instruction.textContent = zoom < 6
+        instruction.textContent = zoom < 10
           ? "Zoom in to discover more cities ↗"
           : "Click on the burgundy markers to explore the cities ↗";
       }
