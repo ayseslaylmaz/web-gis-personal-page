@@ -987,3 +987,7 @@ h1 em,h2 em,h3 em,h4 em,.section-title em {
   object-position: center;
   border-radius: 190px 190px 12px 12px;
 }
+
+.about-layout h1 {
+    font-size: 42px;
+}
