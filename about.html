@@ -1,78 +1,106 @@
+
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hakkımda | Ayşe Sıla Yılmaz</title>
+  <title>About Me | Ayşe Sıla</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <h1>Ayşe Sıla Yılmaz</h1>
+  <header class="site-header">
+    <nav class="site-nav container">
+      <a class="brand" href="index.html">ayssıla<span>
 
-      <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımda</a></li>
-        <li><a href="projects.html">Projelerim</a></li>
-        <li><a href="maps.html">Haritalar</a></li>
+      <button class="mobile-menu" type="button"
+        aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="about.html">About Me</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a href="maps.html">My Maps</a></li>
+        <li><a href="gallery.html">Through My Lens</a></li>
+        <li><a href="index.html#iletisim">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="content">
-      <p class="section-label">HAKKIMDA</p>
-      <h2>Merhaba, ben Ayşe Sıla.</h2>
+    <section class="section inner-page">
+      <div class="container">
+        <p class="eyebrow reveal">ABOUT ME</p>
 
-      <div class="about-layout">
-        <div class="about-text">
-          <p>
-            Hacettepe Üniversitesi Geomatik Mühendisliği bölümünde son sınıf
-            öğrencisiyim. Mekânsal verileri analiz etmeyi, haritalamayı ve
-            web tabanlı uygulamalarda sunmayı seviyorum.
-          </p>
+        <div class="about-layout">
+          <div class="about-photo reveal from-left">
+            <img src="images/profile.png" alt="Ayşe Sıla Yılmaz">
+          </div>
 
-          <p>
-            Akademik çalışmalarımda uzaktan algılama, Coğrafi Bilgi Sistemleri
-            ve Web GIS konularına odaklanıyorum.
-          </p>
+          <div class="about-content reveal from-right">
+            <h1>Hello, I'm <em>Ayşe Sıla Yılmaz.</em></h1>
 
-          <a class="button" href="https://github.com/ayseslaylmaz" target="_blank">
-            GitHub Profilime Git
-          </a>
+            <p class="about-lead">
+              I am 23 years old and a senior student
+              in the Department of Geomatics Engineering
+              at Hacettepe University.
+            </p>
+
+            <p>
+              Throughout my education, I have been exploring
+              different fields of geomatics engineering
+              and working to improve my knowledge and skills.
+            </p>
+
+            <p>
+              I am particularly interested in Geographic
+              Information Systems (GIS), remote sensing,
+              spatial data analysis, and web-based mapping
+              applications. I believe it is important to
+              strengthen the knowledge I gain at university
+              through projects and practical applications.
+            </p>
+
+            <p>
+              Besides my academic interests, I enjoy
+              discovering new places, gaining different
+              experiences, and learning new things.
+              I created this website to share my work
+              and put what I have learned into practice.
+            </p>
+
+            <a class="button-primary" href="projects.html">
+              View My Projects ↗
+            </a>
+          </div>
         </div>
-
-        <aside class="education-card">
-          <p class="card-small-title">EĞİTİM</p>
-          <h3>Hacettepe Üniversitesi</h3>
-          <p>Geomatik Mühendisliği</p>
-          <p class="muted-text">4. sınıf öğrencisi</p>
-        </aside>
       </div>
+    </section>
 
-      <section class="tools-section">
-        <p class="section-label">KULLANDIĞIM ARAÇLAR</p>
-        <h3>Teknolojiler ve Yazılımlar</h3>
+    <section class="section contact-section">
+      <div class="container reveal">
+        <p class="eyebrow">DISCOVER MORE</p>
 
-        <div class="tool-tags">
-          <span>QGIS</span>
-          <span>Google Earth Engine</span>
-          <span>Python</span>
-          <span>HTML</span>
-          <span>CSS</span>
-          <span>JavaScript</span>
-          <span>Leaflet</span>
-          <span>OpenLayers</span>
-          <span>Sentinel-2</span>
-        </div>
-      </section>
+        <h2 class="section-title">
+          Explore <em>my work.</em>
+        </h2>
+
+        <p>
+          Take a look at the fields and projects
+          I have worked on during my university education.
+        </p>
+
+        <a class="button-primary" href="projects.html">
+          My Projects ↗
+        </a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Ayşe Sıla Yılmaz</p>
+  <footer class="site-footer">
+    <span>© 2026 Ayşe Sıla Yılmaz</span>
+    <a href="index.html">Back to Home ↑</a>
   </footer>
 </body>
 </html>

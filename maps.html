@@ -1,161 +1,232 @@
+
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Haritalar | Ayşe Sıla Yılmaz</title>
+  <title>My Maps | Ayşe Sıla</title>
 
   <link rel="stylesheet" href="style.css">
-
-  <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@10.6.1/ol.css">
 
-  <!-- OpenLayers -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.6.1/ol.css">
-  <script src="https://cdn.jsdelivr.net/npm/ol@v10.6.1/dist/ol.js"></script>
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/ol@10.6.1/dist/ol.js"></script>
+  <script defer src="script.js"></script>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <h1>Ayşe Sıla Yılmaz</h1>
+  <header class="site-header">
+    <nav class="site-nav container">
+      <a class="brand" href="index.html">ayssıla<span>
 
-      <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımda</a></li>
-        <li><a href="projects.html">Projelerim</a></li>
-        <li><a href="maps.html">Haritalar</a></li>
+      <button class="mobile-menu" type="button"
+        aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a class="active" href="maps.html">My Maps</a></li>
+        <li><a href="gallery.html">Through My Lens</a></li>
+        <li><a href="index.html#iletisim">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="content">
-      <h2>Web GIS Haritalarım</h2>
+    <section class="section maps-section maps-detail" id="haritalar">
+      <div class="container">
 
-      <p>
-        Aşağıdaki haritalarda Ankara'daki bazı konumlar Leaflet ve OpenLayers
-        kullanılarak gösterilmektedir.
-      </p>
+        <div class="section-heading reveal">
+          <p class="eyebrow">WEB GIS / EXPLORATION</p>
+          <h1 class="section-title">
+            My <em>Mapping Projects.</em>
+          </h1>
+          <p>
+            Places where I enjoy studying and cities I have visited.
+            You can zoom in on the maps and click on the markers
+            to explore different locations.
+          </p>
+        </div>
 
-      <section class="map-section">
-        <h3>Leaflet Haritası</h3>
-        <p class="map-note">
-          İşaretçiler yalnızca harita yeterince yakınlaştırıldığında görünür.
-        </p>
-        <div id="leaflet-map"></div>
-      </section>
+        <!-- FIRST MAP: LEAFLET -->
+        <article class="map-panel reveal">
+          <div class="map-panel-title">
+            <span class="section-number">01</span>
+            <div>
+              <h3>My Favorite Study Spots in Ankara</h3>
+              <p>
+                Libraries and cafés where I enjoy studying.
+                You can filter the locations and click on
+                the markers to read my personal notes.
+              </p>
+            </div>
+          </div>
 
-      <section class="map-section">
-        <h3>OpenLayers Haritası</h3>
-        <p class="map-note">
-          Bu haritada dünya tekrarını engelleyen ayar uygulanmıştır.
-        </p>
-        <div id="openlayers-map"></div>
-      </section>
+          <div class="map-toolbar">
+            <button class="filter-btn active"
+              data-filter="all" type="button">All</button>
+            <button class="filter-btn"
+              data-filter="library" type="button">Libraries</button>
+            <button class="filter-btn"
+              data-filter="cafe" type="button">Cafés</button>
+            <span id="place-count" aria-live="polite">13 places</span>
+          </div>
+
+          <div id="leaflet-map" class="map-canvas"
+            aria-label="Map of my favorite study spots in Ankara"></div>
+
+          <p id="leaflet-status" class="map-status"
+            aria-live="polite"></p>
+
+          <div class="map-legend">
+            <span>
+              <i class="legend-dot library-dot"></i>
+              Libraries
+            </span>
+            <span>
+              <i class="legend-dot cafe-dot"></i>
+              Cafés
+            </span>
+          </div>
+
+          <p class="map-help">
+            Markers appear at zoom level 10 and above.
+          </p>
+        </article>
+
+        <!-- SECOND MAP: OPENLAYERS -->
+        <article class="map-panel reveal">
+          <div class="map-panel-title">
+            <span class="section-number">02</span>
+            <div>
+              <h3>Places I've Visited and Made Memories</h3>
+              <p>
+                This map brings together the cities
+                I have visited in Türkiye and abroad,
+                where I have had different experiences
+                and made special memories.
+              </p>
+            </div>
+          </div>
+
+          <div class="travel-map-note">
+            <span class="travel-count">
+              29 locations · countless memories
+            </span>
+            <span id="travel-map-instruction" aria-live="polite">
+              Zoom in to discover more cities ↗
+            </span>
+          </div>
+
+          <div id="openlayers-map" class="map-canvas"
+            aria-label="Map of places I have visited"></div>
+
+          <p id="ol-status" class="map-status"
+            aria-live="polite"></p>
+
+          <p class="map-help">
+            Selected locations appear from zoom level 3,
+            and all cities are visible at zoom level 6.
+            Click on the burgundy markers to explore.
+          </p>
+        </article>
+
+        <!-- PHOTO TABLE OF STUDY SPOTS -->
+        <div class="map-table-heading reveal">
+          <p class="eyebrow">FROM MY FAVORITE STUDY SPOTS</p>
+          <h4>Little <em>Snapshots.</em></h4>
+          <p>
+            A few photographs of the places I visit
+            to study and spend time.
+          </p>
+        </div>
+
+        <div class="table-scroll reveal from-right">
+          <table class="places-table">
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Place</th>
+                <th>Area</th>
+                <th>Type</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>
+                  <img src="images/millet.png"
+                    alt="Millet Library" loading="lazy">
+                </td>
+                <td>
+                  <strong>Millet Library</strong>
+                  <small>Studying and focusing</small>
+                </td>
+                <td>Beştepe</td>
+                <td>
+                  <span class="type-pill library-pill">
+                    Library
+                  </span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img src="images/loba.png"
+                    alt="Loba Coffee &amp; Bakery" loading="lazy">
+                </td>
+                <td>
+                  <strong>Loba Coffee &amp; Bakery</strong>
+                  <small>Studying with a cup of coffee</small>
+                </td>
+                <td>Çukurambar</td>
+                <td>
+                  <span class="type-pill cafe-pill">Café</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img src="images/kocatepe.png"
+                    alt="Kocatepe 1919" loading="lazy">
+                </td>
+                <td>
+                  <strong>Kocatepe 1919</strong>
+                  <small>Group study sessions with friends</small>
+                </td>
+                <td>Çukurambar</td>
+                <td>
+                  <span class="type-pill cafe-pill">Café</span>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <img src="images/walkers.png"
+                    alt="Walker's Coffee" loading="lazy">
+                </td>
+                <td>
+                  <strong>Walker's Coffee</strong>
+                  <small>Assignments and coffee breaks</small>
+                </td>
+                <td>Bahçelievler</td>
+                <td>
+                  <span class="type-pill cafe-pill">Café</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Ayşe Sıla Yılmaz</p>
+  <footer class="site-footer">
+    <span>© 2026 Ayşe Sıla Yılmaz</span>
+    <a href="index.html">Back to Home ↑</a>
   </footer>
-
-  <script>
-    /* ---------------- LEAFLET HARİTASI ---------------- */
-
-    const leafletMap = L.map("leaflet-map", {
-      worldCopyJump: false,
-      maxBounds: [[-85, -180], [85, 180]],
-      maxBoundsViscosity: 1
-    }).setView([39.90, 32.80], 7);
-
-    L.tileLayer(
-      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      {
-        maxZoom: 19,
-        noWrap: true,
-        attribution: "&copy; OpenStreetMap contributors"
-      }
-    ).addTo(leafletMap);
-
-    const locations = [
-      [39.8700, 32.7350, "Hacettepe Üniversitesi Beytepe Kampüsü"],
-      [39.9334, 32.8597, "Ankara Şehir Merkezi"],
-      [39.9208, 32.8541, "Anıtkabir"],
-      [39.8790, 32.7590, "Bilkent"]
-    ];
-
-    const leafletMarkers = L.layerGroup().addTo(leafletMap);
-
-    function updateLeafletMarkers() {
-      leafletMarkers.clearLayers();
-
-      if (leafletMap.getZoom() >= 10) {
-        locations.forEach(function (location) {
-          L.marker([location[0], location[1]])
-            .bindPopup("<b>" + location[2] + "</b>")
-            .addTo(leafletMarkers);
-        });
-      }
-    }
-
-    leafletMap.on("zoomend", updateLeafletMarkers);
-    updateLeafletMarkers();
-
-
-    /* -------------- OPENLAYERS HARİTASI -------------- */
-
-    const openLayersMap = new ol.Map({
-      target: "openlayers-map",
-      layers: [
-        new ol.layer.Tile({
-          source: new ol.source.OSM({
-            wrapX: false
-          })
-        })
-      ],
-      view: new ol.View({
-        center: ol.proj.fromLonLat([32.80, 39.90]),
-        zoom: 7,
-        minZoom: 3,
-        extent: ol.proj.transformExtent(
-          [-180, -85, 180, 85],
-          "EPSG:4326",
-          "EPSG:3857"
-        )
-      })
-    });
-
-    const openLayersFeatures = locations.map(function (location) {
-      return new ol.Feature({
-        geometry: new ol.geom.Point(
-          ol.proj.fromLonLat([location[1], location[0]])
-        ),
-        name: location[2]
-      });
-    });
-
-    const openLayersMarkerLayer = new ol.layer.Vector({
-      source: new ol.source.Vector({
-        features: openLayersFeatures
-      }),
-      style: new ol.style.Style({
-        image: new ol.style.Circle({
-          radius: 7,
-          fill: new ol.style.Fill({ color: "#e76f51" }),
-          stroke: new ol.style.Stroke({ color: "white", width: 2 })
-        })
-      }),
-      visible: false
-    });
-
-    openLayersMap.addLayer(openLayersMarkerLayer);
-
-    openLayersMap.getView().on("change:resolution", function () {
-      const currentZoom = openLayersMap.getView().getZoom();
-      openLayersMarkerLayer.setVisible(currentZoom >= 10);
-    });
-  </script>
 </body>
 </html>

@@ -1,75 +1,295 @@
+
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ayşe Sıla Yılmaz | Web GIS</title>
+  <title>Ayşe Sıla | My Personal Website</title>
+
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@10.6.1/ol.css">
+
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/ol@10.6.1/dist/ol.js"></script>
+  <script defer src="script.js"></script>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <h1>Ayşe Sıla Yılmaz</h1>
+  <header class="site-header">
+    <nav class="site-nav container">
+      <a class="brand" href="index.html">ayssıla<span>
 
-      <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımda</a></li>
-        <li><a href="projects.html">Projelerim</a></li>
-        <li><a href="maps.html">Haritalar</a></li>
+      <button class="mobile-menu" type="button"
+        aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">My Projects</a></li>
+        <li><a href="maps.html">My Maps</a></li>
+        <li><a href="gallery.html">Through My Lens</a></li>
+        <li><a href="#iletisim">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <p class="welcome">Geomatik Mühendisliği</p>
-      <h2>Coğrafi veriyi anlamlı haritalara dönüştürüyorum.</h2>
+    <!-- HERO SECTION -->
+    <section class="hero" id="anasayfa">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal from-left">
+          <p class="eyebrow">HELLO</p>
+          <h1>I'm<br><em>Ayşe Sıla.</em></h1>
 
-      <p>
-        Hacettepe Üniversitesi Geomatik Mühendisliği son sınıf öğrencisiyim.
-        Uzaktan algılama, Coğrafi Bilgi Sistemleri ve Web GIS alanlarında
-        çalışmalar yapıyorum.
-      </p>
+          <p>
+            I am a senior Geomatics Engineering student
+            at Hacettepe University. This is my personal
+            website, where I share my projects, interests,
+            and little pieces of my life.
+          </p>
 
-      <a class="button" href="projects.html">Projelerimi İncele</a>
-    </section>
+          <div class="hero-actions">
+            <a class="button-primary" href="about.html">
+              Get to Know Me ↗
+            </a>
+            <a class="button-outline" href="projects.html">
+              My Projects ↗
+            </a>
+          </div>
+        </div>
 
-    <section class="intro-section">
-      <div>
-        <p class="section-label">ÇALIŞMA ALANLARIM</p>
-        <h2>Harita, veri ve teknoloji</h2>
+        <div class="hero-photo reveal from-right">
+          <img src="images/profile.png" alt="Ayşe Sıla Yılmaz">
+        </div>
       </div>
 
-      <p>
-        Mekânsal verileri analiz ederek anlaşılır haritalara ve etkileşimli
-        web uygulamalarına dönüştürmeyi seviyorum.
-      </p>
+      <a class="scroll-cue" href="#kesfet">EXPLORE ↓</a>
     </section>
 
-    <section class="skill-grid">
-      <article class="skill-card">
-        <span>01</span>
-        <h3>Uzaktan Algılama</h3>
-        <p>Sentinel-2 görüntüleri ve spektral indekslerle çevresel değişimleri inceliyorum.</p>
-      </article>
+    <!-- SHORT INTRODUCTION -->
+    <section class="section intro-section" id="kesfet">
+      <div class="container intro-grid">
+        <div class="reveal from-left">
+          <p class="eyebrow">01 / ABOUT ME</p>
+          <h2 class="section-title">
+            I love learning<br>and <em>exploring.</em>
+          </h2>
+        </div>
 
-      <article class="skill-card">
-        <span>02</span>
-        <h3>Coğrafi Bilgi Sistemleri</h3>
-        <p>QGIS ile mekânsal analiz, uygunluk analizi ve tematik haritalar üretiyorum.</p>
-      </article>
+        <div class="intro-copy reveal from-right">
+          <p>
+            Throughout my Geomatics Engineering education,
+            I have worked with spatial data, satellite imagery,
+            web-based maps, and field applications.
+            I enjoy improving my skills through different
+            projects and exploring new areas of interest.
+          </p>
 
-      <article class="skill-card">
-        <span>03</span>
-        <h3>Web GIS</h3>
-        <p>Leaflet ve OpenLayers kullanarak etkileşimli haritalar geliştiriyorum.</p>
-      </article>
+          <a class="text-link" href="projects.html">
+            Explore My Projects ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPS SECTION -->
+    <section class="section maps-section maps-home" id="haritalar">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">02 / WEB GIS</p>
+          <h2 class="section-title">
+            My <em>Mapping Projects.</em>
+          </h2>
+        </div>
+
+        <div class="maps-grid">
+          <!-- LEAFLET MAP -->
+          <article class="map-panel map-panel-compact reveal">
+            <div class="map-panel-title">
+              <span class="section-number">01</span>
+              <div>
+                <h3>My Favorite Study Spots in Ankara</h3>
+                <p>
+                  Libraries and cafés where I enjoy studying.
+                  You can filter the locations and click on
+                  the markers to read my personal notes.
+                </p>
+              </div>
+            </div>
+
+            <div class="map-toolbar">
+              <button class="filter-btn active"
+                data-filter="all" type="button">All</button>
+              <button class="filter-btn"
+                data-filter="library" type="button">Libraries</button>
+              <button class="filter-btn"
+                data-filter="cafe" type="button">Cafés</button>
+              <span id="place-count" aria-live="polite">13 places</span>
+            </div>
+
+            <div id="leaflet-map" class="map-canvas"
+              aria-label="Map of my favorite study spots in Ankara"></div>
+
+            <p id="leaflet-status" class="map-status"
+              aria-live="polite"></p>
+
+            <div class="map-legend">
+              <span>
+                <i class="legend-dot library-dot"></i>
+                Libraries
+              </span>
+              <span>
+                <i class="legend-dot cafe-dot"></i>
+                Cafés
+              </span>
+            </div>
+
+            <p class="map-help">
+              Markers appear at zoom level 10 and above.
+            </p>
+          </article>
+
+          <!-- OPENLAYERS MAP -->
+          <article class="map-panel map-panel-compact reveal">
+            <div class="map-panel-title">
+              <span class="section-number">02</span>
+              <div>
+                <h3>Places I've Visited and Made Memories</h3>
+                <p>
+                  This map brings together the cities
+                  I have visited in Türkiye and abroad,
+                  where I have had different experiences
+                  and made special memories.
+                </p>
+              </div>
+            </div>
+
+            <div class="travel-map-note">
+              <span class="travel-count">
+                29 locations · countless memories
+              </span>
+              <span id="travel-map-instruction"
+                aria-live="polite">
+                Zoom in to discover more cities ↗
+              </span>
+            </div>
+
+            <div id="openlayers-map" class="map-canvas"
+              aria-label="Map of places I have visited and made memories"></div>
+
+            <p id="ol-status" class="map-status"
+              aria-live="polite"></p>
+
+            <p class="map-help">
+              Selected locations appear from zoom level 3,
+              and all cities are visible at zoom level 6.
+              Click on the burgundy markers to explore.
+            </p>
+          </article>
+        </div>
+
+        <div class="maps-more">
+          <a class="button-primary" href="maps.html">
+            Explore My Maps ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- THROUGH MY LENS -->
+    <section class="memory-section" id="kadrajim">
+      <div class="memory-heading reveal from-bottom">
+        <span class="memory-label">03 / LITTLE MEMORIES</span>
+        <h2>Through <em>my lens...</em></h2>
+        <p>
+          I love taking photographs of the places I visit,
+          the beautiful views I come across, and the little
+          moments that make life special.
+          Here are a few moments captured through my lens...
+        </p>
+      </div>
+
+      <div class="memory-slider" id="memorySlider">
+        <div class="memory-track" id="memoryTrack">
+          <div class="memory-photo">
+            <img src="images/ani1.jpg" alt="Memory 1">
+          </div>
+          <div class="memory-photo">
+            <img src="images/ani2.jpg" alt="Memory 2">
+          </div>
+          <div class="memory-photo">
+            <img src="images/ani3.jpg" alt="Memory 3">
+          </div>
+          <div class="memory-photo">
+            <img src="images/ani4.jpg" alt="Memory 4">
+          </div>
+          <div class="memory-photo">
+            <img src="images/ani5.jpg" alt="Memory 5">
+          </div>
+          <div class="memory-photo">
+            <img src="images/ani6.jpg" alt="Memory 6">
+          </div>
+        </div>
+      </div>
+
+      <p class="memory-hint">
+        ✦ Scroll through the photos or click on one to take a closer look.
+      </p>
+
+      <div class="memory-more">
+        <a href="gallery.html" class="button-primary">
+          View All Photos ↗
+        </a>
+      </div>
+    </section>
+
+    <!-- PHOTO LIGHTBOX -->
+    <div class="memory-lightbox" id="memoryLightbox"
+      role="dialog" aria-modal="true"
+      aria-label="Photo gallery" aria-hidden="true">
+
+      <button class="memory-close" id="memoryClose"
+        aria-label="Close">×</button>
+
+      <button class="memory-arrow memory-prev" id="memoryPrev"
+        aria-label="Previous photo">❮</button>
+
+      <img id="memoryLargeImage" src="" alt="Selected photo">
+
+      <button class="memory-arrow memory-next" id="memoryNext"
+        aria-label="Next photo">❯</button>
+
+      <span class="memory-counter" id="memoryCounter"></span>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="iletisim">
+      <div class="container reveal from-left">
+        <p class="eyebrow">04 / CONTACT</p>
+        <h2 class="section-title"><em>Get in Touch.</em></h2>
+        <p>
+          If you would like to contact me or explore
+          my work, you can use the links below.
+        </p>
+
+        <div class="contact-actions">
+          <a href="mailto:sila_yilmaz@hacettepe.edu.tr">
+            Email ↗
+          </a>
+
+          <a href="https://github.com/ayseslaylmaz"
+            target="_blank" rel="noopener noreferrer">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Ayşe Sıla Yılmaz</p>
+  <footer class="site-footer">
+    <span>© 2026 Ayşe Sıla Yılmaz</span>
+    <a href="#anasayfa">Back to Top ↑</a>
   </footer>
 </body>
 </html>

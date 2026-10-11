@@ -1,58 +1,189 @@
+
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projelerim | Ayşe Sıla Yılmaz</title>
+  <title>My Projects | Ayşe Sıla</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <h1>Ayşe Sıla Yılmaz</h1>
+  <header class="site-header">
+    <nav class="site-nav container">
+      <a class="brand" href="index.html">ayssıla<span>
 
-      <ul>
-        <li><a href="index.html">Ana Sayfa</a></li>
-        <li><a href="about.html">Hakkımda</a></li>
-        <li><a href="projects.html">Projelerim</a></li>
-        <li><a href="maps.html">Haritalar</a></li>
+      <button class="mobile-menu" type="button"
+        aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a class="active" href="projects.html">My Projects</a></li>
+        <li><a href="maps.html">My Maps</a></li>
+        <li><a href="gallery.html">Through My Lens</a></li>
+        <li><a href="index.html#iletisim">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="content">
-      <h2>Projelerim</h2>
+    <section class="section inner-page">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">MY PROJECTS AND INTERESTS</p>
 
-      <article class="project-card">
-        <h3>Orman Yangını Değişim Analizi</h3>
-        <p>
-          Seferihisar-Menderes bölgesindeki yangın sonrası değişimi Sentinel-2
-          görüntüleri ile NDVI, NBR ve dNBR indekslerini kullanarak inceledim.
-        </p>
-      </article>
+          <h1 class="section-title">
+            From Learning <em>to Practice.</em>
+          </h1>
 
-      <article class="project-card">
-        <h3>Rüzgâr Enerjisi Uygunluk Analizi</h3>
-        <p>
-          Rüzgâr enerjisi santrali için uygun alanların belirlenmesine yönelik
-          mekânsal analiz ve uygunluk haritalaması çalışması yaptım.
-        </p>
-      </article>
+          <p>
+            On this page, I have brought together some
+            of the projects I have worked on and the
+            fields that interest me during my university education.
+          </p>
+        </div>
 
-      <article class="project-card">
-        <h3>Web GIS Çalışmaları</h3>
+        <div class="project-list">
+
+          <!-- PROJECT 01: REMOTE SENSING -->
+          <article class="project-card reveal from-left">
+            <div class="project-number">01</div>
+
+            <div class="project-content">
+              <span class="project-category">REMOTE SENSING</span>
+
+              <h2>Forest Fire and Vegetation Change Analysis</h2>
+
+              <p>
+                I studied the changes caused by forest fires
+                in the Seferihisar–Menderes region of İzmir
+                using satellite imagery. By using Sentinel-2
+                data and spectral indices such as NDVI and NBR,
+                I analyzed vegetation changes before and after
+                the fires.
+              </p>
+
+              <div class="project-tags">
+                <span>Sentinel-2</span>
+                <span>Google Earth Engine</span>
+                <span>NDVI / NBR</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 02: IMAGE PROCESSING -->
+          <article class="project-card reveal from-right">
+            <div class="project-number">02</div>
+
+            <div class="project-content">
+              <span class="project-category">IMAGE PROCESSING</span>
+
+              <h2>Digital Image Processing</h2>
+
+              <p>
+                Using Python, I worked on separating RGB
+                channels, analyzing image histograms,
+                adding noise to images, and applying
+                median filters. These practical exercises
+                helped me observe the results of different
+                image processing techniques.
+              </p>
+
+              <div class="project-tags">
+                <span>Python</span>
+                <span>RGB</span>
+                <span>Histogram</span>
+                <span>Filtering</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 03: WEB GIS -->
+          <article class="project-card reveal from-left">
+            <div class="project-number">03</div>
+
+            <div class="project-content">
+              <span class="project-category">WEB GIS</span>
+
+              <h2>Web GIS and Interactive Systems</h2>
+
+              <p>
+                I am interested in web-based mapping
+                applications and systems where users
+                can contribute spatial data.
+                As part of my graduation project,
+                I am working on the secure collection,
+                sharing, and management of crowdsourced
+                spatial data. I also develop interactive
+                maps using Leaflet and OpenLayers.
+              </p>
+
+              <div class="project-tags">
+                <span>Web GIS</span>
+                <span>Leaflet</span>
+                <span>OpenLayers</span>
+                <span>PostGIS</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 04: FIELD EXPERIENCE -->
+          <article class="project-card reveal from-right">
+            <div class="project-number">04</div>
+
+            <div class="project-content">
+              <span class="project-category">FIELD EXPERIENCE</span>
+
+              <h2>Fieldwork and Construction Site Experience</h2>
+
+              <p>
+                During my internships, I had the opportunity
+                to observe practical applications of
+                geomatics engineering in the field.
+                I gained experience with position and
+                elevation measurements, road construction,
+                excavation areas, and the responsibilities
+                of a geomatics engineer on construction sites.
+              </p>
+
+              <div class="project-tags">
+                <span>Surveying</span>
+                <span>GPS / GNSS</span>
+                <span>Construction Sites</span>
+                <span>Road Construction</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE MAPS -->
+    <section class="section contact-section">
+      <div class="container reveal from-bottom">
+        <p class="eyebrow">INTERACTIVE MAPS</p>
+
+        <h2 class="section-title">
+          Explore <em>My Maps.</em>
+        </h2>
+
         <p>
-          Leaflet ve OpenLayers kullanarak etkileşimli web haritaları
-          geliştirmeyi öğreniyorum.
+          Would you like to explore my interactive web maps?
         </p>
-      </article>
+
+        <a class="button-primary" href="index.html#haritalar">
+          View My Maps ↗
+        </a>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 Ayşe Sıla Yılmaz</p>
+  <footer class="site-footer">
+    <span>© 2026 Ayşe Sıla Yılmaz</span>
+    <a href="index.html">Back to Home ↑</a>
   </footer>
 </body>
 </html>
