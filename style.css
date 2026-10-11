@@ -991,3 +991,34 @@ h1 em,h2 em,h3 em,h4 em,.section-title em {
 .about-layout h1 {
     font-size: 42px;
 }
+
+
+/* MOBILE NAVIGATION */
+@media (max-width: 850px) {
+  .mobile-menu {
+    display: none !important;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-links,
+  .nav-links.open {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}
