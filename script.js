@@ -359,7 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
       lat: 21.3891,
       lng: 39.8579,
       memory: "A place that never sleeps, always full of life and energy...",
-      photos: [9, 11]
+      photos: [9, 11 , 38]
     },
     {
       name: "Medina",
